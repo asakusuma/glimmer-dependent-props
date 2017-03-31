@@ -1,7 +1,7 @@
 {
-  "name": "dependent-props",
+  "name": "glimmer-dependent-props",
   "version": "0.0.0",
-  "description": "A brand new Glimmer app.",
+  "description": "Illustrate Glimmer issue with depending on component args",
   "directories": {
     "doc": "doc",
     "test": "tests"

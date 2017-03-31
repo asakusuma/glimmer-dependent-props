@@ -1,34 +1,20 @@
-# dependent-props
+# glimmer-dependent-props
 
-This README outlines the details of collaborating on this Glimmer application.
-A short introduction of this app could easily go here.
+Illustrates issues with depending on component args.
 
-## Prerequisites
+### 1. Tracked properties can't depend on component arguments
 
-You will need the following things properly installed on your computer.
+```ts
+@tracked('args.parentCount')
+get count() {
+  // Doesn't get updated when this.args.parentCount is updated
+  return this.args.parentCount;
+}
+```
 
-* [Git](https://git-scm.com/)
-* [Node.js](https://nodejs.org/) (with NPM)
-* [Yarn](https://yarnpkg.com/en/)
-* [Ember CLI](https://ember-cli.com/)
+### 2. TypeScript complier isn't privy to the component signature
+The following code causes a complier error: `Property 'parentCount' does not exist on type 'Object'`
 
-## Installation
-
-* `git clone <repository-url>` this repository
-* `cd dependent-props`
-* `yarn`
-
-## Running / Development
-
-* `ember serve`
-* Visit your app at [http://localhost:4200](http://localhost:4200).
-
-### Building
-
-* `ember build` (development)
-* `ember build --environment production` (production)
-
-## Further Reading / Useful Links
-
-* [glimmerjs](http://github.com/tildeio/glimmer/)
-* [ember-cli](https://ember-cli.com/)
+```ts
+this.args.parentCount;
+```
