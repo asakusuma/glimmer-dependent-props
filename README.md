@@ -2,6 +2,12 @@
 
 Illustrates issues with depending on component args.
 
+To see the issue demo:
+```
+yarn
+ember serve
+```
+
 ### 1. Tracked properties can't depend on component arguments
 
 ```ts
