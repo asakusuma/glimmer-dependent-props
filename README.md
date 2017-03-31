@@ -1,24 +1,23 @@
 # glimmer-dependent-props
 
-Illustrates issues with depending on component args.
+~~Illustrates issues with depending on component args.~~
+Demonstrates how to create computed properties that depend on component args.
 
-To see the issue demo:
+For a better demo, checkout: https://github.com/glimmerjs/glimmer-demos/blob/master/src/ui/components/server-uptime/component.ts
+
 ```
 yarn
 ember serve
 ```
 
-### 1. Tracked properties can't depend on component arguments
-
 ```ts
-@tracked('args.parentCount')
-get count() {
-  // Doesn't get updated when this.args.parentCount is updated
-  return this.args.parentCount;
+@tracked('args')
+get computedArg() {
+  return this.args.myArg;
 }
 ```
 
-### 2. TypeScript complier isn't privy to the component signature
+### TypeScript complier isn't privy to the component signature
 The following code causes a complier error: `Property 'parentCount' does not exist on type 'Object'`
 
 ```ts
